@@ -1,0 +1,5 @@
+banana() returns the product of all of the elements of an integer array "a". "kiwi" is the value of the product and "i" is the counting variable for the loop.
+
+grapefruit() returns the index in an integer array "a" at which an integer "grape" can be found. If it is not present, it returns -1. "i" is the counting variable for the loop.
+
+pineapple() returns the number of times an integer "apple" appears in an integer array "a". "pear" is the variable in which the count is stored and "pine" is the name given to each element of the array in the enhanced "for" loop.
