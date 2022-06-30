@@ -1,0 +1,43 @@
+Exercise 1  
+Logical operators can simplify nested conditional statements. For example, can you rewrite this code using a single if statement?
+
+if (x > 0 && x < 10) {
+  System.out.println("positive single digit number.");
+}
+
+Exercise 2   For the following program:
+
+1. Draw a stack diagram that shows the state of the program the second time zoop is invoked.
+----------------------------------------
+   main |  bizz |5|            buzz |2|
+----------------------------------------
+  clink |  fork |4|
+----------------------------------------
+   zoop |  fred |"breakfast "|  bob |4|
+----------------------------------------
+
+
+2. What is the complete output?
+just for
+any not more 
+It's breakfast 
+!
+
+
+3. Draw a stack diagram that shows the state of the program in Section 5.8 after main invokes nLines with the parameter n == 4, just before the last invocation of nLines returns.
+
+I am assuming in this case that nLines() was invoked as nLines(4), rather than having the argument be a declared and assigned variable in main().
+
+----------------
+  main |
+----------------
+nLines |  n |4|
+----------------
+nLines |  n |3|
+----------------
+nLines |  n |2|
+----------------
+nLines |  n |1|
+----------------
+nLines |  n |0|
+----------------
