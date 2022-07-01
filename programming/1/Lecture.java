@@ -6,6 +6,8 @@ public class Lecture {
     System.out.println(reverseString("Kiana"));
     System.out.println(allUpper("Kiana.Herr"));
     System.out.println(word2("The dog barks."));
+    System.out.println();
+    System.out.println("");
   }
   
 
