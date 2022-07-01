@@ -18,10 +18,10 @@ public class Nim //goal: be the player to remove the last stone
     Scanner input = new Scanner(System.in);
     Random rand = new Random();
     //loop until game ends
-    System.out.println("Let's play Nim! This version you have 12 stones to begin and the last player to take a stone wins! You can remove between 1 and 3 stones.");
+    System.out.println("Let's play Nim! There are 12 stones to begin and the last player to take a stone wins! You can remove between 1 and 3 stones.\n");
     while (stones > 0) {
       //prompt user input (user turn)
-      System.out.println("How many stones do you wish to remove?");
+      System.out.print("How many stones do you wish to remove? ");
       stonesTaken = input.nextInt();
       input.nextLine();
       if (stonesTaken > 0 && stonesTaken < 4) {
@@ -31,9 +31,11 @@ public class Nim //goal: be the player to remove the last stone
           System.out.println("There are " + stones + " stones remaining.");
         } else {
           System.out.println("You cannot take that many stones. There are only " + stones + "stones remaining. Please try again.");
+          continue;
         }
       } else {
         System.out.println("You cannot take that many stones. You may take 1-3 stones. Please try again.");
+        continue;
       }
       //check for win
       if (stones == 0){
@@ -47,6 +49,7 @@ public class Nim //goal: be the player to remove the last stone
         //check for win
         if (stones == 0){
           System.out.println("The machine has taken the last stone. Sorry, you lose!");
+          break;
         }
       }
     }
