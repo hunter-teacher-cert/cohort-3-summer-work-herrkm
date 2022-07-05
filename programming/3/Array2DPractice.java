@@ -100,7 +100,10 @@ public class Array2DPractice
   */
   public static void setRow( char[][] board, int row, char value )
   {
-    /* YOUR AWESOME CODE HERE */
+    for (int i = 0; i < board[row].length; i++)
+    {
+      board[row][i] = value;
+    }
   }
 
 
@@ -163,7 +166,17 @@ public class Array2DPractice
   */
   public static void explodeSquare( char[][] board, int row, int col )
   {
-    /* YOUR AWESOME CODE HERE */
+    for (int i = Math.max(0, row - 1); i <= Math.min(row + 1, board.length - 1); i++) //start at index 0 or row - 1, whichever is larger; end at index row + 1 or length - 1, whichever is smaller. (Avoid out of bounds error)
+    {
+      for (int j = Math.max(0, col - 1); j <= Math.min(col + 1, board[i].length); j++)
+      {
+          if (! (i == row && j == col))
+          {
+            board[i][j] = 'X';
+          }
+      }
+    } 
+      
   }
 
   /**
@@ -174,6 +187,16 @@ public class Array2DPractice
      Example:
 
      Given the array
+     qqzqq
+     qqqqq
+     qqqqq
+     qqqqq
+     qzqqq
+     qqqqq
+     qqqqz
+
+     explodeAllchar(board,'z') will change board to:
+
      qXzXq
      qXXXq
      qqqqq
@@ -181,8 +204,6 @@ public class Array2DPractice
      XzXqq
      XXXXX
      qqqXz
-
-     explodeAllchar(board,'z') will change board to:
   */
   public static void explodeAllChar(char[][] board, char c)
   {
@@ -248,9 +269,19 @@ public class Array2DPractice
       can use array notation to also access individual
       elements
     */
-
+    System.out.println("Original board:");
     printBoard(b);
+    System.out.println();
+    
+    System.out.println("Copy board and change line 2 elements to \'a\':");
     char[][] newBoard = copyBoard(b);
+    setRow(newBoard, 2, 'a');
+    printBoard(newBoard);
+    System.out.println();
+    
+    System.out.println("Explode (1,2) and (4,8):");
+    explodeSquare(newBoard, 1, 2);
+    explodeSquare(newBoard, 4, 8);
     printBoard(newBoard);
   }
 }
