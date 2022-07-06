@@ -56,7 +56,24 @@ public class Cgol
   }
 
 
- 
+  //create a new board that has approximately percentLive % of cells alive
+  public static char[][] createRandomBoard(int rows, int columns, int percentLive)
+  {
+    char [][] board = new char[rows][columns];
+    Random r = new Random();
+    for (int i = 0; i < rows; i++)
+    {
+      for (int j = 0; j < columns; j++)
+      {
+        board[i][j] = (r.nextInt(100) > percentLive - 1) ? '-' : 'X'; //if the random number is outside the specified percent then the cell is dead, if it's inside then the cell is alive
+      }
+    }
+    return board;
+  }
+
+
+
+  
 
   //return number of living neigbours of board[r][c]
   public static int countNeighbours( char[][] board, int r, int c )
@@ -64,7 +81,7 @@ public class Cgol
     int row = board.length;
     int col = board[0].length;
     int count = 0;
-    for (int i = Math.max(0, r - 1); i <= r + 1;  i++){
+    for (int i = Math.max(0, r - 1); i < row && i <= r + 1;  i++){
        for (int j = Math.max(0, c - 1); j < col && j <= c + 1 ; j++){
         if (!(i == r && j == c)){ //if not on the target cell
           //System.out.println("Row " + i + ", column " + j);
@@ -114,42 +131,64 @@ public class Cgol
     return nextBoard;
   }
 
+  //repeat generateNextBoard a specified number of times
+  public static char[][] generateFuture( char[][] board, int n)
+  {
+    if (n == 1)
+    {
+      board = generateNextBoard(board);
+    }
+    else 
+    {
+      board = generateFuture(board, n-1);
+    }
+    return board;
+  }
 
   public static void main( String[] args )
   {
     
-    char[][] board;
-    board = createNewBoard(5,5);
-    //board = createNewBoard(5,5);
-    //breathe life into some cells:
-    setCell(board, 0, 0, 'X');
-    setCell(board, 0, 1, 'X');
-    setCell(board, 1, 0, 'X');
-    setCell(board, 2, 4, 'X');
-    // TASK:
-    // Once your initial version is running,
-    // try out different starting configurations of living cells...
-    // (Feel free to comment out the above three lines.)
-    System.out.println("Gen X:");
-    printBoard(board);
+    // char[][] board;
+    // board = createNewBoard(5,5);
+    // //board = createNewBoard(5,5);
+    // //breathe life into some cells:
+    // setCell(board, 0, 0, 'X');
+    // setCell(board, 0, 1, 'X');
+    // setCell(board, 1, 0, 'X');
+    // setCell(board, 2, 4, 'X');
+    // // TASK:
+    // // Once your initial version is running,
+    // // try out different starting configurations of living cells...
+    // // (Feel free to comment out the above three lines.)
+    // System.out.println("Gen X:");
+    // printBoard(board);
 
-    System.out.println("Number of neighbors of cell at row 0 column 1:");
-    System.out.println(countNeighbours(board, 0, 1));
-    System.out.println("Next gen status of cell at row 0 column 0:");
-    System.out.println(getNextGenCell(board, 0, 0)); //alive and should survive
-    System.out.println("Next gen status of cell at row 1 column 1:");
-    System.out.println(getNextGenCell(board, 1, 1)); //dead and should be born
-    System.out.println("Next gen status of cell at row 3 column 3:");
-    System.out.println(getNextGenCell(board, 3, 3)); //dead and should stay dead
-    System.out.println("--------------------------\n\n");
-
-    
-    board = generateNextBoard(board);
-    System.out.println("Gen X+1:");
-    printBoard(board);
-    System.out.println("--------------------------\n\n");
+    // System.out.println("Number of neighbors of cell at row 0 column 1:");
+    // System.out.println(countNeighbours(board, 0, 1));
+    // System.out.println("Next gen status of cell at row 0 column 0:");
+    // System.out.println(getNextGenCell(board, 0, 0)); //alive and should survive
+    // System.out.println("Next gen status of cell at row 1 column 1:");
+    // System.out.println(getNextGenCell(board, 1, 1)); //dead and should be born
+    // System.out.println("Next gen status of cell at row 3 column 3:");
+    // System.out.println(getNextGenCell(board, 3, 3)); //dead and should stay dead
+    // System.out.println("--------------------------\n\n");
 
     
+    // board = generateNextBoard(board);
+    // System.out.println("Gen X+1:");
+    // printBoard(board);
+    // System.out.println("--------------------------\n\n");
+
+    char[][] boardRandom = createRandomBoard(25,25, 20);
+    System.out.println("Gen 0:");
+    printBoard(boardRandom);
+    System.out.println("\n\nGen 1:");
+    boardRandom = generateNextBoard(boardRandom);
+    printBoard(boardRandom);
+
+    System.out.println("\n\nGen 10:");
+    char[][] boardTen = generateFuture(boardRandom, 10);
+    printBoard(boardTen);
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
