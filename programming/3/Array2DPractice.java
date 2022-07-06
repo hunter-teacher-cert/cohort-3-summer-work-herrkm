@@ -207,7 +207,29 @@ public class Array2DPractice
   */
   public static void explodeAllChar(char[][] board, char c)
   {
-    /* YOUR AWESOME CODE HERE */
+    int[][] coordinates = new int[board.length*board[0].length][2]; //create array with max possible elements x 2 to track coordinates of cells that match char c
+    int coordCount = 0;
+    //need to fill array with coordinates of target char. row in column 0, col in column 1
+    for (int i = 0; i < board.length; i++)
+      {
+        for (int j = 0; j < board[i].length; j++)
+          {
+            if (board[i][j] == c)
+            {
+              coordinates[coordCount][0] = i;
+              coordinates[coordCount][1] = j;
+              coordCount += 1;
+            }
+          }
+      }
+    for (int i = 0; i<coordinates.length; i++) System.out.println(coordinates[i]);
+    for (int row = 0; row < board.length; row++)
+      {
+        for (int col = 0; col < board[row].length; col++)
+          {
+            explodeSquare(board, row, col);
+          }
+      }
   }
 
 
@@ -283,5 +305,16 @@ public class Array2DPractice
     explodeSquare(newBoard, 1, 2);
     explodeSquare(newBoard, 4, 8);
     printBoard(newBoard);
+
+    System.out.println("Copy original board and change some characters to \'a\'");
+    char[][] testBoard = copyBoard(b);
+    testBoard[2][1] = 'a';
+    testBoard[0][4] = 'a';
+    testBoard[1][3] = 'a';
+    printBoard(testBoard);
+
+    System.out.println("ExplodeAllChar with target char \'a\'");
+    explodeAllChar(testBoard, 'a');
+    printBoard(testBoard);
   }
 }
