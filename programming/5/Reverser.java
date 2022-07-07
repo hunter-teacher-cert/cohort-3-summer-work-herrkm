@@ -14,7 +14,12 @@ public class Reverser
   */
   public static String reverseR( String s )
   {
-    /* YOUR SIMPLE, SMART IMPLEMENTATION HERE */
+    if (s.length() == 1){
+      return s;
+    }
+    else {
+      return reverseR(s.substring(1)) + s.charAt(0);
+    }
   }
 
 
@@ -25,7 +30,7 @@ public class Reverser
     System.out.println( reverseR("abcdefg") );
     System.out.println( reverseR("stressed") );
     System.out.println( reverseR("amanaplanacanalPanama") );
-
+    System.out.println( reverseR("radar") );
     //more tests welcome
     // got some good palindromes?
   }

@@ -20,7 +20,7 @@ public class BinSearch
   public static int binSearch ( int[] a, int target )
   {
     //Q: Why did the designers of this class opt for 2 binSearch methods instead of 1?
-    //return binSearchRec( /* YOUR SMART CODE HERE */ );
+    //A: Because when you subdivide the array, you'll need to be able to pass additional changing arguments to the search. This is the method through which the recursive method is accessed.
     return binSearchRec( a, target, 0, a.length-1 );
   }
 
@@ -30,23 +30,23 @@ public class BinSearch
   {
     int tPos = -1; //init return var to flag/signal value
 
-    int mPos = (lo + hi) / 2; //init tracker var for middle position
-
+    int mPos = (loPos + hiPos) / 2; //init tracker var for middle position
+    //note: integer division
     //exit case. If lo & hi have crossed, target not present
-    if ( /* YOUR SMART CODE HERE */ )
-      return /* YOUR SMART CODE HERE */ ;
+    if (hiPos < loPos) 
+      return tPos;
 
     // target found
-    if ( /* YOUR SMART CODE HERE */ ) {
-      /* YOUR SMART CODE HERE */
+    if ( a[mPos] == target ) {
+      tPos = mPos;
     }
     // value at mid index higher than target
-    else if ( /* YOUR SMART CODE HERE */ ) {
-      /* YOUR SMART CODE HERE */
+    else if ( a[mPos] > target ) {
+      tPos = binSearchRec(a, target, loPos, mPos - 1); //don't need to include mPos since we already checked it
     }
     // value at mid index lower than target
-    else if ( /* YOUR SMART CODE HERE */ ) {
-      /* YOUR SMART CODE HERE */
+    else if ( a[mPos] < target ) {
+      tPos = binSearchRec(a, target, mPos + 1, hiPos); //don't need to include mPos since we already checked it
     }
 
     return tPos;
@@ -87,7 +87,6 @@ public class BinSearch
   public static void main ( String[] args )
   {
     //move the bar down to uncover tests in succession...
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     System.out.println("\nNow testing binSearch on int array...");
 
     //Declare and initialize array of ints
@@ -125,7 +124,6 @@ public class BinSearch
 
     //search for 43 in array
     System.out.println( binSearch(iArr3,43) );
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     /* YOUR SMART CODE HERE :: Feel free to add extra tests...*/
 
