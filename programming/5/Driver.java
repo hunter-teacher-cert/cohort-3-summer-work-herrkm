@@ -38,6 +38,19 @@ public class Driver {
 
     t.add(t2);
     System.out.println(t.toString());
+
+    Time t3 = new Time(3, 13, 30);
+    System.out.println("Does " + t3 + " equal " + t + "?");
+    System.out.println(t3.equals(t));
+    System.out.println("Does " + t3 + " equal " + t2 + "?");
+    System.out.println(t3.equals(t2));
+
+    System.out.println("Compare " + t3 + " to " + t + ":");
+    System.out.println(t3.compareTo(t));
+    
+    System.out.println("Compare " + t3 + " to " + t2 + ":");
+    System.out.println(t3.compareTo(t2));
+    
     }//end main()
 
 }//end class

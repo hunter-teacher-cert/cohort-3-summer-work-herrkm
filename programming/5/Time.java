@@ -153,9 +153,10 @@ public class Time {
        false otherwise.
     */
     public boolean equals(Time other){
-	// your code here)
+  	  int thisSeconds = this.hours*3600 + this.minutes*60 + this.seconds;
+      int otherSeconds = other.hours*3600 + other.minutes*60 + other.seconds;
 
-	return false; // change this
+	  return thisSeconds == otherSeconds; // change this
     }
 
     /**
@@ -173,10 +174,14 @@ public class Time {
 
     */
     public int compareTo(Time other){
-	// your code here)
-      
+  	  int thisSeconds = this.hours*3600 + this.minutes*60 + this.seconds;
+      int otherSeconds = other.hours*3600 + other.minutes*60 + other.seconds;
+      int result;
+      if (thisSeconds > otherSeconds) result = 1;
+      if (thisSeconds < otherSeconds) result = -1;
+      else result = 0;
 
-	return 0; // change this
+	  return result; // change this
     }
     
 
