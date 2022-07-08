@@ -1,4 +1,4 @@
-  import java.io.*;
+import java.io.*;
 import java.util.*;
 
 
@@ -52,6 +52,8 @@ public class Time {
       this.hours = 0;
 	    this.minutes = 0;
 	    this.seconds = 0;
+
+     
 	
     }
 
@@ -61,6 +63,7 @@ public class Time {
 
        Initialize this instance to represent hrs:mins:secs as the time.
        //time is our object "this". refers to the instance variable in the object
+  Time is overloaded because there is one version that has arguments and one that does not. The two constructors, one on line 50 is the default and the one on line 68 is the one we set.
      */
     public Time(int hrs, int mins, int secs){
       hours = hrs;
@@ -79,11 +82,25 @@ public class Time {
        returns a string representation of the time
     */
     public String toString(){
-	    return hours + ":" + minutes + ":" + seconds;
-    }
-
-
+      String minString;
+      if(minutes <10) {
+        minString = "0" + minutes;
+      }
+      else {
+        minString = String.valueOf(minutes);
+      }
     
+      String secString;
+      if(seconds <10) {
+        secString = "0" + seconds;
+      }
+      else {
+       secString = String.valueOf(seconds);
+        
+      }
+	    return hours + ":" + minString + ":" + secString;
+    }
+    // Accounts for minute or seconds that are less than 10 to display as 0 prior to minutes or seconds
 
     /**
        Parameters:
@@ -115,7 +132,14 @@ public class Time {
       this.hours += other.hours;
       this.minutes += other.minutes;
       this.seconds += other.seconds;
+
+      //if seconds > 60, add an extra minute to minutes and remove extra seconds
+      this.minutes += this.seconds / 60;
+      this.seconds = this.seconds % 60;
       
+      //if minutes > 60, add an extra hour to hours and remove extra minutes
+      this.hours += this.minutes / 60;
+      this.minutes = this.minutes % 60;
 
     }
 
