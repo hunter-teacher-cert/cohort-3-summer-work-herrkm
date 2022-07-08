@@ -43,6 +43,21 @@ public class Driver
       System.out.print( r + " / " + s + " = ");
       r.divide(s);
       System.out.println(r);
+
+      System.out.println("Is " + r + " equal to " + s + "?");
+      System.out.println(r.equals(s));
+
+      System.out.println("Is " + r + " equal to " + r + "?");
+      System.out.println(r.equals(r));
+
+      System.out.println("Compare " + r + " to " + s + ":");
+      System.out.println(r.compareTo(s));
+
+      System.out.println("Compare " + r + " to " + r + ":");
+      System.out.println(r.compareTo(r));
+
+      System.out.println("Compare " + s + " to " + r + ":");
+      System.out.println(s.compareTo(r));
   }
 
 }//end class

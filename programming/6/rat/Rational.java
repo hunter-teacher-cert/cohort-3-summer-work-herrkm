@@ -96,6 +96,7 @@ public class Rational
     //multiply numerator by r's numerator and denominator by r's denominator
     this._numerator *= r._numerator;
     this._denominator *= r._denominator;
+    this.reduce();
   }
 
 
@@ -111,7 +112,57 @@ public class Rational
       //multiply this fraction by reciprocal of r
       this._numerator *= r._denominator;
       this._denominator *= r._numerator;
+      this.reduce();
     }
   }
 
+  public int gcd(int n, int d){
+    int gcd = 1;
+    //check values between 2 and smaller int for divisibility into both ints
+    for (int i = 2; i <= Math.min(n, d); i++)
+    {
+      if (n % i == 0 && d % i == 0){
+        gcd = i;
+      }
+    }
+    return gcd;
+  }
+  //reduces the rational number to lowest terms
+  public void reduce(){
+    int gcf = gcd(this._numerator, this._denominator); 
+    
+    //divide both numerator and denominator by gcf
+    _numerator /= gcf;
+    _denominator /= gcf;
+  }
+
+  public boolean equals(Rational other)
+  {
+    this.reduce();
+    other.reduce();
+    return (this._numerator == other._numerator && this._denominator == other._denominator);
+  }
+
+  public int compareTo(Rational other)
+  {
+    int result;
+    //make denominators match by multiplying both rationals by opposite denominator
+    Rational temp1 = new Rational(this._numerator*other._denominator, this._denominator*other._denominator); //this 
+    Rational temp2 = new Rational(other._numerator*this._denominator, other._denominator*this._denominator); //other
+    if (temp1._numerator > temp2._numerator)
+    {
+      result = 1;
+    }
+    else if (temp1._numerator < temp2._numerator)
+    {
+      result = -1;
+    }
+    else
+    {
+      result = 0;
+    }
+    return result;
+  }
+
+  
 }//end class
