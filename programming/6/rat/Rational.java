@@ -54,7 +54,7 @@ public class Rational
   } else {
       _numerator = 0;
       _denominator = 1;
-      System.out.println("Invalid denominator attempted...numerator is now 0 and denominator is now 1");
+      System.out.println("Invalid denominator attempted... reverting to default value of 0/1");
   }
 
   }
@@ -75,11 +75,12 @@ public class Rational
   {
     if (_denominator == 0)
     {
+      //this should never happen; can't produce denominator of zero by constructor OR division
       System.out.println("Error: divide by 0. Returning 0.0");
       return 0.0;
     } else
     {
-      return (double) _numerator / _denominator;  
+      return (double) _numerator / _denominator;
     }
   }
 
@@ -92,6 +93,7 @@ public class Rational
   // need not reduce
   public void multiply( Rational r )
   {
+    //multiply numerator by r's numerator and denominator by r's denominator
     this._numerator *= r._numerator;
     this._denominator *= r._denominator;
   }
@@ -101,10 +103,12 @@ public class Rational
   // same as multiply, except operation is division
   public void divide( Rational r )
   {
+    //if r's numerator is 0, then multiplying by the reciprocal will produce a denominator of 0
     if (r._numerator == 0){
       System.out.println("Error: divide by 0. Value is still " + this);
     }
     else {
+      //multiply this fraction by reciprocal of r
       this._numerator *= r._denominator;
       this._denominator *= r._numerator;
     }
