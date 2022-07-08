@@ -1,7 +1,7 @@
 /**
  * SuperArray by Team MarvelvsDC
- * First Last
- * collaborators: First Last, First Last
+ * Greg Sciame
+ * collaborators: Merieke Thomas, Kiana Herr, Moo Joon Park
  */
 
 /**
@@ -39,10 +39,10 @@ public class SuperArray
   public SuperArray( int size )
   {
     //init underlying/inner storage of specified capacity
-    /* YOUR SIMPLE+SMART CODE HERE */
+    this.data = new int [size];
 
     //init instance vars
-    /* YOUR SIMPLE+SMART CODE HERE */
+    this.numberElements = 0;
 
   }
 
@@ -50,11 +50,9 @@ public class SuperArray
   public SuperArray()
   {
     //init underlying/inner storage of capacity 10
-        /* YOUR SIMPLE+SMART CODE HERE */
-
+this.data = new int [10];
     //init instance vars
-        /* YOUR SIMPLE+SMART CODE HERE */
-  }
+this.numberElements = 0;
 
 
   // ~~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~
@@ -83,7 +81,7 @@ public class SuperArray
   public boolean isEmpty()
   {
     //return whether this SuperArray instance is empty
-    /* YOUR SIMPLE+SMART CODE HERE */
+   return(numberElements==0);
   }
 
 
@@ -91,6 +89,7 @@ public class SuperArray
   {
     //return item at index
     /* YOUR SIMPLE+SMART CODE HERE */
+    return 1;
   }
 
 
@@ -98,6 +97,7 @@ public class SuperArray
   {
     //return stringified version of this Object
     /* YOUR SIMPLE+SMART CODE HERE */
+    return "";
   }//end toString()
 
 
