@@ -33,12 +33,11 @@ public class Driver {
     Time t2 = new Time(3,13,30);
     System.out.println(t2.toString());
 
-    t.set(2,22,23);
+    t.set(2,22,33);
     System.out.println(t.toString());
-    Time other = new Time(2,5,20);
-     System.out.println(other.toString());
-    other.add(1,1,1);
-    System.out.println(other.toString());
+
+    t.add(t2);
+    System.out.println(t.toString());
     }//end main()
 
 }//end class
