@@ -56,6 +56,9 @@ public class SuperArray
 
   }
   // ~~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~
+  
+  //Don't need this with toString completed
+  /*
   public void print()
   {
     for (int i = 0; i < numberElements; i++)
@@ -64,6 +67,7 @@ public class SuperArray
       }
     System.out.println();
   }
+  **/
 
     
   public void add( int value )
