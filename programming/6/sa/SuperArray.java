@@ -39,7 +39,7 @@ public class SuperArray
   public SuperArray( int size )
   {
     //init underlying/inner storage of specified capacity
-    this.data = new int [size];
+    this.data = new int[size];
 
     //init instance vars
     this.numberElements = 0;
@@ -50,30 +50,37 @@ public class SuperArray
   public SuperArray()
   {
     //init underlying/inner storage of capacity 10
-this.data = new int [10];
+    this.data = new int[10];
     //init instance vars
-this.numberElements = 0;
+    this.numberElements = 0;
 
-
+  }
   // ~~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~
+  public void print()
+  {
+    for (int i = 0; i < numberElements; i++)
+      {
+        System.out.print(data[i] + " ");
+      }
+    System.out.println();
+  }
+
+    
   public void add( int value )
   {
     // test to see if we need to grow, then grow
-    /**
-       IMPORTANT:
-       This is the first code that should run in this method
-       but the last code you should write.
-       Implement the rest of this method first,
-       then only write this section once the rest is tested and working.
-    */
-    /* YOUR SIMPLE+SMART CODE HERE */
+    if (numberElements == data.length)
+    {
+      this.grow();
+    }
+
 
     // add item
-    /* YOUR SIMPLE+SMART CODE HERE */
+    this.data[numberElements] = value;
 
 
     // increment numberElements
-    /* YOUR SIMPLE+SMART CODE HERE */
+    this.numberElements += 1;
 
   }//end add()
 
@@ -88,16 +95,19 @@ this.numberElements = 0;
   public int get(int index)
   {
     //return item at index
-    /* YOUR SIMPLE+SMART CODE HERE */
-    return 1;
+    return data[index];
   }
 
 
   public String toString()
   {
     //return stringified version of this Object
-    /* YOUR SIMPLE+SMART CODE HERE */
-    return "";
+    String stringArray = "";
+    for (int i = 0; i < numberElements; i++)
+      {
+        stringArray = stringArray + " " + data[i];
+      }
+    return stringArray;
   }//end toString()
 
 
@@ -120,26 +130,36 @@ this.numberElements = 0;
   public void remove(int index)
   {
     // shift items down to remove the item at index
-    /* YOUR SIMPLE+SMART CODE HERE */
+    for (int i = index; i < numberElements - 1; i++)
+      //we don't actually want to access index i + 1 if the underlying size of the array is equal to numberElements
+      {
+        data[i] = data[i+1];
+      }
 
     // subtract fom numElements;
-    /* YOUR SIMPLE+SMART CODE HERE */
+    numberElements -= 1;
   }
 
 
   public void add(int index, int value)
   {
     // see if there's enough room
-    /* YOUR SIMPLE+SMART CODE HERE */
+    if (numberElements == data.length)
+    {
+      this.grow();
+    }
 
     // shift elements toward the end of the array
-    /* YOUR SIMPLE+SMART CODE HERE */
+    for (int i = numberElements; i >= Math.max(index, 1); i--) //if index is 0 we don't want to try to access index i-1; if index is anything else we do
+      {
+        data[i] = data[i-1];
+      }
 
     // insert new element
-    /* YOUR SIMPLE+SMART CODE HERE */
+    data[index] = value;
 
     // increment numElements
-    /* YOUR SIMPLE+SMART CODE HERE */
+    numberElements += 1;
   }
 
 
@@ -147,14 +167,21 @@ this.numberElements = 0;
   {
     // create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
-    /* YOUR SIMPLE+SMART CODE HERE */
+    //arbitrarily chose 10 to increase by default size amount. adding one at a time seems wasteful
+    int[] data2 = new int[data.length + 10];
+
 
     // copy over all the elements from the old array to the new one
-    /* YOUR SIMPLE+SMART CODE HERE */
-
+    for (int i = 0; i < data.length; i++)
+      {
+        data2[i] = data[i];
+      }
+    
     // point data to the new array
+    data = data2;
+
     // Q: How does this look when illustrated using encapsulation diagram?
-    /* YOUR SIMPLE+SMART CODE HERE */
+    //A new empty array called data2 of length data.length + 10 is created. It gets filled up to data.length - 1 with the current values in data. The reference name "data" gets pointed to the contents of data2.
   }//end grow()
 
 }//end class

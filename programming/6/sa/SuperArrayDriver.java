@@ -11,9 +11,33 @@ public class SuperArrayDriver
 
     System.out.println("Testing empty print:");
     System.out.println(sa);
-   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     System.out.println("Testing isEmpty (should be true)");
     System.out.println(sa.isEmpty());
+
+    
+    System.out.println("Testing constructor with size argument:");
+    SuperArray sa2 = new SuperArray(20);
+    System.out.println("Adding values:");
+    sa2.add(10);
+    sa2.add(299);
+    sa2.add(42);
+    
+    System.out.println("Testing print of array:");
+    System.out.println(sa2);
+
+    System.out.println("Adding more than max values:");
+    sa2.add(4);
+    sa2.add(166);
+    sa2.add(4);
+    sa2.add(6);
+    sa2.add(14);
+    sa2.add(36);
+    sa2.add(3);
+    sa2.add(34);
+    System.out.println(sa2);
+
+
 
     // -----------------------------------------------------------
     // YOUR HOMEGROWN/HOUSEMADE/ROLL-YOUR-OWN TEST METHODS HERE...
@@ -25,8 +49,9 @@ public class SuperArrayDriver
       sa.add(i);
     }//for i
     System.out.println(sa);
+    System.out.println("Testing whether array is empty:");
     System.out.println(sa.isEmpty());
-
+    
     System.out.println("\nTesting add at index 5, 0 and 17(end)");
     sa.add(5, 100);
     System.out.println(sa);
@@ -35,6 +60,11 @@ public class SuperArrayDriver
     sa.add(17, 100);
     System.out.println(sa);
 
+    System.out.println("Get the value at index 5, 0, and 17:");
+    System.out.println(sa.get(5));
+    System.out.println(sa.get(0));
+    System.out.println(sa.get(17));
+    
     System.out.println("\nTesting remove at 0, 5, and 15 (end)");
     sa.remove(0);
     System.out.println(sa);
@@ -44,7 +74,7 @@ public class SuperArrayDriver
 
     sa.remove(15);
     System.out.println(sa);
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    
 
   }//main
 
