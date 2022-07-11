@@ -1,5 +1,5 @@
 /**
- * SuperArray by Team MarvelvsDC
+ * SuperArray by Breakout Room #9 July 8th, 2022
  * Greg Sciame
  * collaborators: Merieke Thomas, Kiana Herr, Moo Joon Park
  */
@@ -50,55 +50,68 @@ public class SuperArray
   public SuperArray()
   {
     //init underlying/inner storage of capacity 10
-    this.data = new int[10];
+    this.data = new int [10];
     //init instance vars
     this.numberElements = 0;
-
+    
   }
+
   // ~~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~
-  
-  //Don't need this with toString completed
-  /*
   public void print()
   {
-    for (int i = 0; i < numberElements; i++)
-      {
-        System.out.print(data[i] + " ");
-      }
-    System.out.println();
-  }
-  **/
-
+    for(int i=0; i < numberElements ;i++){
+      System.out.println(this.data[i]);
+    }
     
+  }
   public void add( int value )
   {
     // test to see if we need to grow, then grow
-    if (numberElements == data.length)
-    {
-      this.grow();
-    }
-
+      if(numberElements == data.length) {
+        this.grow();
+        /*
+        int[] data2 = new int[data.length + 10];
+        for(int i = 0; i < data.length; i++)
+          {
+            data2[i] = data[i];
+          }
+        data = data2;
+          */      
+      }     
+    
+ 
 
     // add item
-    this.data[numberElements] = value;
-
+    data[numberElements] = value;
 
     // increment numberElements
-    this.numberElements += 1;
-
+    
+    numberElements += 1;
   }//end add()
 
 
   public boolean isEmpty()
   {
     //return whether this SuperArray instance is empty
-   return(numberElements==0);
+    if(numberElements == 0){
+      return true;    
+    } else {
+      return false;
+    }
+      
+    // you can also just type:
+    //return(numberElements==0);
+    //or
+    //return numberElements == 0;
+    //which do the same thing as the if(){}else{} statement
   }
 
 
   public int get(int index)
   {
     //return item at index
+    /* YOUR SIMPLE+SMART CODE HERE */
+    
     return data[index];
   }
 
@@ -106,12 +119,12 @@ public class SuperArray
   public String toString()
   {
     //return stringified version of this Object
-    String stringArray = "";
-    for (int i = 0; i < numberElements; i++)
-      {
-        stringArray = stringArray + " " + data[i];
-      }
-    return stringArray;
+    /* YOUR SIMPLE+SMART CODE HERE */
+    String str = "";
+    for(int i = 0; i < numberElements; i++){
+      str = str + data[i] + " ";
+    }
+    return str;
   }//end toString()
 
 
@@ -134,110 +147,65 @@ public class SuperArray
   public void remove(int index)
   {
     // shift items down to remove the item at index
-    for (int i = index; i < numberElements - 1; i++)
-      //we don't actually want to access index i + 1 if the underlying size of the array is equal to numberElements
-      {
-        data[i] = data[i+1];
-      }
-
+        for(int i = index; i < numberElements - 1; i++){
+      data[i] = data[i+1];
+    }
     // subtract fom numElements;
-    numberElements -= 1;
+   numberElements --;
+    
+    
   }
 
 
   public void add(int index, int value)
   {
-    //I have chosen to allow the user to add a value to whatever index they choose. I can imagine scenarios where this functionality may be useful, and while my first instinct was to say "they should have planned for the size array they needed," even allowing an index larger than numElements  should be permissible for max usability (consider Ed's example - another five kids get added to your class)
-    //mostly I'm doing this as an exercise; I realize that it may not be the most broadly applicable, but I appreciate flexibility and the creativity it requires. This does also require the assumption that the user is doing this on purpose rather than making this choice by mistake.
-
-    //if index is outside of the allowable indices OR the new addition kicks the size over the current size, then grow the array.
-    if (index >= data.length)
-    {
-      //call the grow method with a size argument to fit the target index
-      this.grow(index);
-      this.debug();
-    }
+    // see if there's enough room
+    /* YOUR SIMPLE+SMART CODE HERE */
+  if(index > numberElements){
+    System.out.println("Not enough indeces...the array is unchanged.");
     
-    //if the array is currently full (this won't ever be the case if the above is true)
-    if (numberElements == data.length)
-    {
+  } else {
+            
+    if(numberElements == data.length){
       this.grow();
     }
+ for(int i = numberElements; i > index; i--){
+   data[i] = data[i-1];
+ }
+    // shift elements toward the end of the array
+    /* YOUR SIMPLE+SMART CODE HERE */
 
-    //the array is now large enough for whatever the need is
-    //if the target index is outside the current meaningful data then numberElements will need to be increased to 1 more than this new outermost index (counts the end of the meaningful data, not the number of meaningful entries)
-    if (index >= numberElements) 
-    {
-      //first ensure that any values in the hidden portion of the array are 0
-      for (int i = numberElements; i < data.length; i++)
-        {
-          data[i] = 0;
-        }
-      //no need to shift elements - the index is outside the existing meaningful data
-      data[index] = value;
-      numberElements = index + 1;
-    }
-    else //(if index < numberElements)
-    {
-      // shift elements toward the end of the array
-      for (int i = numberElements; i > index; i--)
-        {
-          data[i] = data[i-1];
-        }
-
-      // insert new element
-      data[index] = value;
-
-      // increment numElements
-      numberElements += 1;
-    }
-    
-    
+    // insert new element
+    /* YOUR SIMPLE+SMART CODE HERE */
+data[index] = value;
+    // increment numElements
+    /* YOUR SIMPLE+SMART CODE HERE */
+    numberElements++;
+     }
   }
-
-  public void replace(int index, int value) //replaces the value at a given index with a specified value
-  {
-    this.remove(index); //removes the old value
-    this.add(index, value); //adds the new value
-  }
-
 
 
   private void grow()
   {
     // create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
-    //arbitrarily chose 10 to increase by default size amount. adding one at a time seems wasteful
     int[] data2 = new int[data.length + 10];
 
-
-    // copy over all the elements from the old array to the new one
-    for (int i = 0; i < data.length; i++)
+    // copy over all the elements from the old array to the new one    
+    for(int i = 0; i < data.length; i++)
       {
         data2[i] = data[i];
       }
-    
-    // point data to the new array
+
+    // point data to the new array    
     data = data2;
 
+
+
+
+
     // Q: How does this look when illustrated using encapsulation diagram?
-    //A new empty array called data2 of length data.length + 10 is created. It gets filled up to data.length - 1 with the current values in data. The reference name "data" gets pointed to the contents of data2.
+    /* YOUR SIMPLE+SMART CODE HERE */
   }//end grow()
-
-
-  //grow to a target index
-  private void grow(int n)
-  {
-    int[] data3 = new int[n+1];
-
-    //copy over all elements from old array to new array
-    for (int i = 0; i < data.length; i++)
-      {
-        data3[i] = data[i];
-      }
-
-    //point data to the new array
-    data = data3;
-  }
 
 }//end class
