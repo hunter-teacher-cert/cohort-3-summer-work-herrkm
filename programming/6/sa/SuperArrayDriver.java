@@ -74,8 +74,14 @@ public class SuperArrayDriver
 
     sa.remove(15);
     System.out.println(sa);
-    
 
+    System.out.println("\nTesting replacement of item at index 2 with 10:");
+    sa.replace(2, 10);
+    System.out.println(sa);
+
+    System.out.println("\nTest adding a value at an index outside or equal to the size of the array:");
+    sa.add(30, 100);
+    System.out.println(sa);
   }//main
 
 }//class SuperArrayDriver

@@ -147,24 +147,60 @@ public class SuperArray
 
   public void add(int index, int value)
   {
-    // see if there's enough room
+    //I have chosen to allow the user to add a value to whatever index they choose. I can imagine scenarios where this functionality may be useful, and while my first instinct was to say "they should have planned for the size array they needed," even allowing an index larger than numElements  should be permissible for max usability (consider Ed's example - another five kids get added to your class)
+    //mostly I'm doing this as an exercise; I realize that it may not be the most broadly applicable, but I appreciate flexibility and the creativity it requires. This does also require the assumption that the user is doing this on purpose rather than making this choice by mistake.
+
+    //if index is outside of the allowable indices OR the new addition kicks the size over the current size, then grow the array.
+    if (index >= data.length)
+    {
+      //call the grow method with a size argument to fit the target index
+      this.grow(index);
+      this.debug();
+    }
+    
+    //if the array is currently full (this won't ever be the case if the above is true)
     if (numberElements == data.length)
     {
       this.grow();
     }
 
-    // shift elements toward the end of the array
-    for (int i = numberElements; i >= Math.max(index, 1); i--) //if index is 0 we don't want to try to access index i-1; if index is anything else we do
-      {
-        data[i] = data[i-1];
-      }
+    //the array is now large enough for whatever the need is
+    //if the target index is outside the current meaningful data then numberElements will need to be increased to 1 more than this new outermost index (counts the end of the meaningful data, not the number of meaningful entries)
+    if (index >= numberElements) 
+    {
+      //first ensure that any values in the hidden portion of the array are 0
+      for (int i = numberElements; i < data.length; i++)
+        {
+          data[i] = 0;
+        }
+      //no need to shift elements - the index is outside the existing meaningful data
+      data[index] = value;
+      numberElements = index + 1;
+    }
+    else //(if index < numberElements)
+    {
+      // shift elements toward the end of the array
+      for (int i = numberElements; i > index; i--)
+        {
+          data[i] = data[i-1];
+        }
 
-    // insert new element
-    data[index] = value;
+      // insert new element
+      data[index] = value;
 
-    // increment numElements
-    numberElements += 1;
+      // increment numElements
+      numberElements += 1;
+    }
+    
+    
   }
+
+  public void replace(int index, int value) //replaces the value at a given index with a specified value
+  {
+    this.remove(index); //removes the old value
+    this.add(index, value); //adds the new value
+  }
+
 
 
   private void grow()
@@ -187,5 +223,21 @@ public class SuperArray
     // Q: How does this look when illustrated using encapsulation diagram?
     //A new empty array called data2 of length data.length + 10 is created. It gets filled up to data.length - 1 with the current values in data. The reference name "data" gets pointed to the contents of data2.
   }//end grow()
+
+
+  //grow to a target index
+  private void grow(int n)
+  {
+    int[] data3 = new int[n+1];
+
+    //copy over all elements from old array to new array
+    for (int i = 0; i < data.length; i++)
+      {
+        data3[i] = data[i];
+      }
+
+    //point data to the new array
+    data = data3;
+  }
 
 }//end class
