@@ -34,7 +34,17 @@ public class AlPractice{
     number between 0 and maxval (not including maxval).
   */
   public static ArrayList<Integer> buildRandomList(int size, int maxval){
-    return null;//placeholder to compile.
+    //create new ArrayList object called randomList
+    ArrayList <Integer> randomList = new ArrayList <Integer> (size);
+    //create new Random object to generate random values
+    Random r = new Random();
+    
+    for (int i = 0; i < size; i++){
+      //use .add method to place a random value in each element of randomList
+      randomList.add(r.nextInt(maxval));
+    }
+        
+    return randomList;
   }
 
   /**
@@ -44,7 +54,11 @@ public class AlPractice{
   - The sum of all of the elements of the ArrayList.
   */
   public static int sumOfList(ArrayList<Integer> dataList){
-    return 0;//placeholder to compile.
+    int listSum = 0;
+      for (int i = 0; i < dataList.size(); i++){
+        listSum += dataList.get(i);
+      }
+    return listSum;
   }
 
   /**
@@ -60,7 +74,12 @@ public class AlPractice{
   - No other values should be modified.
   */
   public static void swapElements(ArrayList<Integer> dataList, int index1,int index2){
-
+    //hold value at index1
+    int temp = dataList.get(index1);
+    //set value at index1 to value at index2
+    dataList.set(index1, dataList.get(index2));
+    //set value at index2 to held value
+    dataList.set(index2, temp);
   }
 
   /**
@@ -71,6 +90,12 @@ public class AlPractice{
   - The dataList is modified such that all occurances of valueToRemove are removed.
   */
   public static void removeValue(ArrayList<Integer> dataList, int valueToRemove){
+    //define new Integer object so I can use remove by value
+    Integer temp = new Integer(valueToRemove);
+    for(int i = 0; i < dataList.size(); i++){
+      //remove first instance of the target value
+      dataList.remove(temp);
+    }
 
   }
 
@@ -87,7 +112,12 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> sumLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    return null;//placeholder to compile.
+    ArrayList <Integer> sumList = new ArrayList <Integer> (ListA.size());
+    for (int i = 0; i < ListA.size(); i++){
+      sumList.add(ListA.get(i) + ListB.get(i));
+    }
+    
+    return sumList;
   }
 
   /** zipLists
@@ -101,7 +131,9 @@ public class AlPractice{
   - The parameter ArrayLists should not be modified.
   */
   public static ArrayList<Integer> zipLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
-    return null;//placeholder to compile.
+    ArrayList <Integer> zippedList = new ArrayList <Integer> (ListA.size() + ListB.size());
+    
+    return zippedList;//placeholder to compile.
   }
 
 
@@ -112,23 +144,44 @@ public class AlPractice{
     ArrayList<Integer> al;
 
     // Uncomment these to test buildRandomList
-    //al = buildRandomList(10,100);
-    //System.out.println(al);
+    System.out.println("Build a random list of size 10 with values up to 100:");
+    al = buildRandomList(10,100);
+    System.out.println(al);
+
+    //Testing sum
+    System.out.println("\nTesting sumOfList:");
+    int alSum = sumOfList(al);
+    System.out.println(alSum);
 
     // Uncomment these to test swapElements
-    // swapElements(2,6);
-    //System.out.println(al);
+    System.out.println("\nSwap elements at indices 2 and 6:");
+    swapElements(al, 2, 6);
+    System.out.println(al);
 
     // Uncomment these to test removeValue
-    // al.add(5);
-    // al.add(10);
-    // al.add(5);
-    // al.add(13);
-    // al.set(2,5);
-    // al.set(3,5);
-    // System.out.println(a);
-    // removeValue(al,5);
-    // System.out.println(a);
+    System.out.println("\nAdd several 5's to the arrayList, then remove them:");
+    al.add(5);
+    al.add(10);
+    al.add(5);
+    al.add(13);
+    al.set(2,5);
+    al.set(3,5);
+    System.out.println(al);
+    removeValue(al,5);
+    System.out.println(al);
+
+    //Testing sumLists
+    ArrayList <Integer> al2 = new ArrayList <Integer> ();
+    al2 = buildRandomList(10, 100);
+    System.out.println("\nFirst arrayList:");
+    System.out.println(al);
+    System.out.println("\nSecond arrayList:");
+    System.out.println(al2);
+
+    ArrayList <Integer> sumList = new ArrayList <Integer> ();
+    sumList = sumLists(al, al2);
+    System.out.println("\nSummed arrayList:");
+    System.out.println(sumList);
 
   }
 
