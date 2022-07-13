@@ -132,7 +132,25 @@ public class AlPractice{
   */
   public static ArrayList<Integer> zipLists(ArrayList<Integer>ListA,ArrayList<Integer>ListB){
     ArrayList <Integer> zippedList = new ArrayList <Integer> (ListA.size() + ListB.size());
-    
+    for (int i = 0, j = 0; zippedList.size() < (ListA.size() + ListB.size()); i++, j++){
+      //if we haven't put in all values from ListA
+      if (i < ListA.size()){
+        //AND we haven't put in all values from ListB
+        if (j < ListB.size()){
+          zippedList.add(ListA.get(i));
+          zippedList.add(ListB.get(j));
+        
+        } else {
+          //if we HAVE finished all values from ListB
+          zippedList.add(ListA.get(i));
+        }
+        
+      } else {
+        if (j < ListB.size()){
+          zippedList.add(ListB.get(j));
+        }
+      }
+    } //ends the for loop
     return zippedList;//placeholder to compile.
   }
 
@@ -182,6 +200,18 @@ public class AlPractice{
     sumList = sumLists(al, al2);
     System.out.println("\nSummed arrayList:");
     System.out.println(sumList);
+
+    //Testing zipLists
+    ArrayList <Integer> al3 = new ArrayList <Integer> ();
+    al3 = buildRandomList(5, 20);
+    System.out.println("\nFirst arrayList:");
+    System.out.println(sumList);
+    System.out.println("\nSecond arrayList:");
+    System.out.println(al3);
+    ArrayList <Integer> zip = new ArrayList <Integer> ();
+    zip = zipLists(sumList, al3);
+    System.out.println("\nZipped lists:");
+    System.out.println(zip);
 
   }
 
