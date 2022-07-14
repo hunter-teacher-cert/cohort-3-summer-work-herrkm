@@ -15,4 +15,8 @@ Practices:
     * thinker.fetch(kts)
     * thinker.fetch(kts)
     * thinker.createFlag
-    }
+
+* Explicitly teach flowcharts.
+* * Specific shapes have specific meanings.
+  * Start at VERY beginning, and add as new concepts are built in.
+  * Have flowchart pieces to put on the wall.
