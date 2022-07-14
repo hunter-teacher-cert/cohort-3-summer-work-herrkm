@@ -8,7 +8,7 @@ Links:
 Practices:
 * Color code stuff. Example: "note" info, "structure" info, "example" info, "you do this" info
 * Write directions for start in pseudocode/code!
-* * if (wrkstn % 2 == 1){
+  * if (wrkstn % 2 == 1){
     * thinker.login;
     * thinker.whatever;
   * } else {
@@ -17,6 +17,6 @@ Practices:
     * thinker.createFlag
 
 * Explicitly teach flowcharts.
-* * Specific shapes have specific meanings.
+  * Specific shapes have specific meanings.
   * Start at VERY beginning, and add as new concepts are built in.
   * Have flowchart pieces to put on the wall.
