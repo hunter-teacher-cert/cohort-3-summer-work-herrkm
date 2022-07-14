@@ -7,3 +7,12 @@ Links:
 
 Practices:
 * Color code stuff. Example: "note" info, "structure" info, "example" info, "you do this" info
+* Write directions for start in pseudocode/code!
+* * if (wrkstn % 2 == 1){
+      thinker.login;
+      thinker.whatever;
+    } else {
+      thinker.fetch(kts)
+      thinker.fetch(kts)
+      thinker.createFlag
+    }
