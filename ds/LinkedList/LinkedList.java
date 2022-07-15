@@ -31,7 +31,7 @@ public class LinkedList{
 
   public LinkedList(){
     head = null;
-  }
+  } 
 
   /**
   Parameters:
@@ -40,14 +40,21 @@ public class LinkedList{
   Adds a new node containing value to the front of the list.
   */
   public void add(String value){
-
+    Node newNode = new Node(value, head);
+    //System.out.println(n1);
+    head = newNode;
+    //System.out.println(head);
   }
 
   /**
   Returns the String in the node at location index.
   */
   public String get(int index){
-    return "";
+    Node walker = head;
+    for(int i = 0; i < index; i++){
+      walker = walker.getNext();
+    }
+    return walker.getData();
   }
 
   /**
@@ -55,19 +62,26 @@ public class LinkedList{
   */
   public String toString(){
     Node walker = head;
-    String stringList = "";
-    while (walker != null){
-      stringList += stringList;
+    String listString = "";
+    while (walker.getNext() != null){
+      listString += walker.getData() + "->";
       walker = walker.getNext();
     }
-    return stringList;
+    listString += walker.getData();
+    return listString;
   }
 
   /**
   returns the number of elements in the list
   */
   public int size(){
-    return 0;
+    Node walker = head;
+    int count = 0;
+    while (walker != null){
+      count += 1;
+      walker = walker.getNext();
+    }
+    return count;
   }
 
 
@@ -88,8 +102,27 @@ public class LinkedList{
 
   */
   public void add(int index, String value){
+    if (index == 0){
+      add(value);
+    } else {
+      Node walker = head;
+      //walk through to get the node currently at the target index
+      for (int i = 0; i < index; i++){
+        walker = walker.getNext();
+      } //ends for loop
+      
+      Node previous = head;
+      //walk through to get the node currently before the target index
+      for (int j = 0; j < index - 1; j++){
+        previous = previous.getNext();
+      } //ends for loop
+      
+    Node newNode = new Node(value, walker);
+    previous.setNext(newNode);
+    } //ends if/else
 
-  }
+    
+  } //ends add method
 
 
   /**
