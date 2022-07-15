@@ -39,30 +39,43 @@ public class BarGraphify{
   } //ends barGraphify
 
 
-  
-  public static void vBarGraphify(int[] nums){
-    //find max of items in array
-    int maxValue = 0;
-    for (int i = 0; i < nums.length; i++){
-      if (nums[i] > maxValue){
-        maxValue = nums[i];
-      }
-    } //end for loop to find max
-    
-    String[][] stringArray = new String[maxValue + 1][nums.length];
-    for (int j = 0; j < nums.length; j++){
-      for (int k = 0; k <= maxValue; k++){
-        //fills a column to height k from the bottom
-        stringArray[maxValue - k][j] = (nums[j] <= maxValue - k) ? "*" : " ";
-      }
-      stringArray[maxValue][j] = String.valueOf(j);
-    } //end for loop to build stringArray[][]
 
-    for (String[] row : stringArray){
+  public static int maxOfList(int[] nums){
+    //find max of items in array
+    int maxVal = 0;
+    for (int i = 0; i < nums.length; i++){
+      if (nums[i] > maxVal){
+        maxVal = nums[i];
+      } //ends the if statement
+    } //ends the for loop
+    return maxVal;
+  } //ends maxOfList method
+
+
+  public static void printArray(String[][] array){
+    for (String[] row : array){
       for (String element : row){
         System.out.print(element + " ");
       }
       System.out.println();
     }
-  }
+  } //ends printArray method
+
+  
+  public static void vBarGraphify(int[] nums){
+    int maxValue = maxOfList(nums);
+    
+    String[][] stringArray = new String[maxValue + 1][nums.length];
+    for (int j = 0; j < nums.length; j++){ //iterate through columns
+      for (int k = 0; k <= maxValue; k++){ //iterate through rows
+        //fills a column to height k from the bottom
+        stringArray[maxValue - k][j] = (k <= nums[j]) ? "*" : " ";
+      } //end row loop
+      stringArray[maxValue][j] = String.valueOf(j);
+    } //end loop to build stringArray[][]
+
+    printArray(stringArray);
+    
+  } //ends vBarGraphify method
+  
 }
