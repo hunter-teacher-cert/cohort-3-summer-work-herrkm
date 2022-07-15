@@ -53,7 +53,7 @@ public class BarGraphify{
     for (int j = 0; j < nums.length; j++){
       for (int k = 0; k <= maxValue; k++){
         //fills a column to height k from the bottom
-        stringArray[k][j] = (nums[j] <= k) ? "*" : " ";
+        stringArray[maxValue - k][j] = (nums[j] <= maxValue - k) ? "*" : " ";
       }
       stringArray[maxValue][j] = String.valueOf(j);
     } //end for loop to build stringArray[][]
