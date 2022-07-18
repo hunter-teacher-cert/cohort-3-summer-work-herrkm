@@ -34,8 +34,8 @@ public class Driver{
     l.add(7, "six");
     System.out.println(l);
 
-    System.out.println("\nPrint the Linked List after adding \"six\" at index 5:");
-    l.add(5, "six");
+    System.out.println("\nPrint the Linked List after adding \"six\" at index 0:");
+    l.add(0, "six");
     System.out.println(l);
 
     //testing indexOf
@@ -53,8 +53,8 @@ public class Driver{
     System.out.println();
 
     //testing remove
-    System.out.println("\nPrint the Linked List after removing the item at index 2:");
-    l.remove(2);
+    System.out.println("\nPrint the Linked List after removing the item at index 3:");
+    l.remove(3);
     System.out.println(l);
 
     System.out.println("\nPrint the Linked List after removing the item at index 7:");
