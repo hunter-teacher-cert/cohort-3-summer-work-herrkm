@@ -23,7 +23,7 @@ Alise BraickF, Harrison Fung, Kiana Herr, Stacy Goldstein
 public class Cgol
 {
 
-  CLEAR_SCREEN =  "\033[2J";
+  static String CLEAR_SCREEN = "\033[2J";
   static String TO_TOP_OF_SCREEN = "\033[1;1H";
   static String HIDE_CURSOR = "\033[?25l";
   //create, initialize, and return  empty board (all cells dead) Dead cells denoted by '-'

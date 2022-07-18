@@ -64,7 +64,7 @@ public class Cgol
     int row = board.length;
     int col = board[0].length;
     int count = 0;
-    for (int i = Math.max(0, r - 1); i <= r + 1;  i++){
+    for (int i = Math.max(0, r - 1); i < row && i <= r + 1;  i++){
        for (int j = Math.max(0, c - 1); j < col && j <= c + 1 ; j++){
         if (!(i == r && j == c)){ //if not on the target cell
           //System.out.println("Row " + i + ", column " + j);

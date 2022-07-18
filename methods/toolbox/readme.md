@@ -4,6 +4,7 @@ Links:
 * https://www.monroe.k12.ky.us/userfiles/1057/Classes/4407/districthourofcode.pdf?id=54365
 * https://www.flocabulary.com/unit/coding-algorithms/
 * https://www.codingrooms.com/
+* https://create.kahoot.it/share/predikahoot/45a347df-dae5-4b8b-a5f4-3098f26fe15f (conditionals)
 
 Practices:
 * Color code stuff. Example: "note" info, "structure" info, "example" info, "you do this" info
