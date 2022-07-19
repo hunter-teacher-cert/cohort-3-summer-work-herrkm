@@ -57,7 +57,9 @@ public class LinkedList{
     if (index >= this.size() || index < 0){
       System.out.println("Invalid index. Returning empty string.");
       return "";
+      
     } else {
+      
       Node walker = head;
       for(int i = 0; i < index; i++){
         walker = walker.getNext();
@@ -72,10 +74,12 @@ public class LinkedList{
   public String toString(){
     Node walker = head;
     String listString = "";
+    
     while (walker.getNext() != null){
       listString += walker.getData() + "->";
       walker = walker.getNext();
     }
+    
     listString += walker.getData();
     return listString;
   }
@@ -87,10 +91,12 @@ public class LinkedList{
     //return size;
     Node walker = head;
     int count = 0;
+    
     while (walker != null){
       count ++;
       walker = walker.getNext();
     }
+    
     return count;
   }
 
@@ -116,11 +122,15 @@ public class LinkedList{
     //if index is out of bounds
     if (index < 0 || index > listLength){
       System.out.println("Invalid index. No change made.");
+      
     } else {
-      Node walker = head;
+      
       if (index == 0){
         this.add(value);
+        
       } else {
+        
+        Node walker = head;
         //simplest case
         //walk through to get the node before the target index
         for (int i = 0; i < index - 1; i++){
@@ -151,7 +161,9 @@ public class LinkedList{
       //if current data is value, then return current index, otherwise go to next node
       if (walker.getData() == value){
         return i;
+        
       } else {
+        
         walker = walker.getNext();
       }
     }
@@ -200,9 +212,12 @@ public class LinkedList{
   public void remove(int index){
     if (index < 0 || index >= this.size()){
       System.out.println("Invalid index. No change made.");
+      
     } else if (index == 0) {
       head = head.getNext();
+      
     } else {
+      
       Node walker = head;
       //get to one Node before target index
       for (int i = 0; i < index - 1; i++){
