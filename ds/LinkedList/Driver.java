@@ -64,5 +64,22 @@ public class Driver{
     System.out.println("\nPrint the Linked List after removing the item at index 0:");
     l.remove(0);
     System.out.println(l);
+
+    System.out.println("\nPrint the Linked List after adding multiple copies of \"six\"");
+    l.add("six");
+    l.add(3, "six");
+    l.add(3, "six");
+    l.add(7, "six");
+    System.out.println(l);
+
+    System.out.println("\nPrint the array of indices containing the string \"six\"");
+    int[] sixIndices = l.indicesOf("six");
+    for (int element : sixIndices) System.out.print(element + " ");
+    System.out.println();
+
+    System.out.println("\nPrint the array of indices containing the string \"seven\"");
+    int[] sevenIndices = l.indicesOf("seven");
+    for (int element : sevenIndices) System.out.print(element + " ");
+    System.out.println();
   }
 }

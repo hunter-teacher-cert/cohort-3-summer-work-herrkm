@@ -213,4 +213,24 @@ public class LinkedList{
       //size --;
     }
   }
+
+  public int[] indicesOf(String value){
+    int length = this.size();
+    int[] indices = new int[length];
+    for (int j = 0; j < length; j++){
+      indices[j] = -1;
+    }
+    Node walker = head;
+    int counter = 0;
+    for (int i = 0; i < length; i++){
+      if (walker.getData() == value){
+        indices[counter] = i;
+        counter++;
+      }
+      walker = walker.getNext();
+    }
+    return indices;
+  }
+
+  
 }
