@@ -60,5 +60,9 @@ public class Driver{
     System.out.println("\nPrint the Linked List after removing the item at index 7:");
     l.remove(7);
     System.out.println(l);
+
+    System.out.println("\nPrint the Linked List after removing the item at index 0:");
+    l.remove(0);
+    System.out.println(l);
   }
 }

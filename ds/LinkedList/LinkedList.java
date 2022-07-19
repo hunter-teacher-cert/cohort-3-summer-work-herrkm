@@ -200,6 +200,8 @@ public class LinkedList{
   public void remove(int index){
     if (index < 0 || index >= this.size()){
       System.out.println("Invalid index. No change made.");
+    } else if (index == 0) {
+      head = head.getNext();
     } else {
       Node walker = head;
       //get to one Node before target index
