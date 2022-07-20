@@ -1,18 +1,30 @@
 import java.io.*;
 import java.util.*;
 
+/**
+SortSearch.java
+Owner: Théa W.
+Collaborators: Adam P., Ben E., Kiana H. 
+Group 5
+Dates: 7/18/22, 7/19/22, 7/20/22
+**/
+
 /*
 Sort Project:
+
 Part 1:  (BASIC)
-  1. Analyze the two constructors - try to figure out how they work. DONE
+  1. Analyze the two constructors - try to figure out how they work.- DONE
   2. Compile and run the program (SortSearchDriver.java and SortSearch.java) and confirm
-  the behavior of the constructors. DONE
-  Part 2: (BASIC)
-  1. Read the description of findSmallestIndex and complete the method. DONE
-  2. Uncomment the lines in SortSearchDriver to test.
-  Part 3: (INTERMEDIATE)
-  1. Complete the sort method - read comments for description
-  2. Uncomment the lines in SortSearchDriver to test.
+  the behavior of the constructors.- DONE
+  
+Part 2: (BASIC)
+  1. Read the description of findSmallestIndex and complete the method.- DONE
+  2. Uncomment the lines in SortSearchDriver to test.- DONE
+  
+Part 3: (INTERMEDIATE)
+  1. Complete the sort method - read comments for description - DONE
+  2. Uncomment the lines in SortSearchDriver to test. - DONE
+
 Search Project:
   1. Complete the linear search (BASIC)
   2. Complete the binary search (Intermediate)
@@ -81,7 +93,7 @@ public class SortSearch{
         {
           smallIndex = i;
         }
-      }	
+      }	//ends the for loop
     	return smallIndex;
     }
 
@@ -97,10 +109,22 @@ public class SortSearch{
 	 
        
     */
-    public void sort(){
+    public void sort()
+    {
+      for(int i = 0; i < data.size(); i++)
+      {
+        int smallest = findSmallestIndex(i); //we call the method "findSmallestIndex, which finds the index that contains the smallest element(value) and stores the index (#) of that smallest element in the variable "smallest" which outside the arraylist.
+        
+        int temp = data.get(smallest); //takes the value of the element in smallest and saves it to a temporary variable, outside the arraylist, called "temp".
+        
+        data.set(smallest,data.get(i)); //gets the value of the element at position "i" and moves it (overwrites the data) at smallest.
+       
+        data.set(i,temp); //sets the value of the element at index i to the value currently in the variable temp.
+        
+      } // ends the for loop
 
 
-    }
+    } // ends the sort method
 
 
 
@@ -113,10 +137,19 @@ public class SortSearch{
        until either the element is found or you've looked at all the elements.
        This algorithm works on any ArrayList.
     */
-    public int linearSearch(int value){
+    public int linearSearch(int value)
+    {
+      for(int i = 0; i < data.size(); i++)
+      {
+        if (data.get(i) == value)
+        {
+          return i;
+        }
+        
+      } // ends the for loop
 	
 	
-	    return 0; // replace this return
+	    return -1; // return if not found
     }
     
     /**
@@ -126,11 +159,12 @@ public class SortSearch{
     */
     public int binarySearch(int value){
 
-	// create assign variables  representing the high, low and middle indices 
-	// while we're not done:
-	//   if the item is at data.get(middle), return middle
-	//   otherwise, update high, low, and middle
-
+  	// create assign variables  representing the high, low and middle indices 
+      int low = 0;
+  	// while we're not done:
+  	//   if the item is at data.get(middle), return middle
+  	//   otherwise, update high, low, and middle
+    
 	    return 0;
 	    
     }
