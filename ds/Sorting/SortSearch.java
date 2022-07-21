@@ -56,11 +56,15 @@ public class SortSearch{
   public SortSearch(int size)//overloaded constructor that takes in an int "size"
   {
     data = new ArrayList<Integer>();//initializes the instance variable "data"
-    r = new Random();//initializes the instance variable "r".
-    for (int i=0; i<size; i++)//size is provided by the user through through the varialbe "size"
-    {
-      data.add(r.nextInt(20));//the parameter "20" fills with random values between 0 and 19
+
+    for (int i = 0 ; i < size; i++){
+      data.add(i);
     }
+    // r = new Random();//initializes the instance variable "r".
+    // for (int i=0; i<size; i++)//size is provided by the user through through the varialbe "size"
+    // {
+    //   data.add(r.nextInt(20));//the parameter "20" fills with random values between 0 and 19
+    // }
 
   }
 
@@ -136,7 +140,7 @@ public class SortSearch{
 
 
   /* Search project starts here */
-  
+    
   /**
      performs a linear search. Returns the index of the first occurence of
      value in the ArrayList data or -1 if not found.
@@ -239,7 +243,7 @@ public class SortSearch{
       searchBoard[1][i] = " ";
       searchBoard[2][i] = " ";
     }
-  // create assign variables  representing the high, low and middle indices. Set label strings into rows 1 and 2.
+    // create assign variables  representing the high, low and middle indices. Set label strings into rows 1 and 2.
     int low = 0;
     searchBoard[low][2] = "L";
     searchBoard[low][1] = "^";
@@ -275,7 +279,7 @@ public class SortSearch{
 
 
   public static void printBoard(String board[][]){
-    for (int i = 0)
+ 
   }
   
   public static void delay(int n)
