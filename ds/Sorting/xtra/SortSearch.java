@@ -33,6 +33,9 @@ Search Project:
 
 public class SortSearch{
 
+  private static final String whiteText = "\u001B[37m";
+  private static final String redText = "\u001b[31m";
+  private static final String greenText = "\u001b[32;1m";
   /* Sort project starts here */
   
   /* Instance Variables */
@@ -241,9 +244,10 @@ public class SortSearch{
   public void binarySearchAnimated(int value){
     //build board for animation
     System.out.print("\033[1;1H\033[2J"); //clear screen, place cursor at top left
+    System.out.println("Searching for " + value + ":");
     String[][] searchBoard = new String[3][size];
     for (int i = 0; i < size; i++){
-      searchBoard[0][i] = String.valueOf(data.get(i));
+      searchBoard[0][i] = (data.get(i) < 10) ? "0" + String.valueOf(data.get(i)) : String.valueOf(data.get(i));
       searchBoard[1][i] = " ";
       searchBoard[2][i] = " ";
     }
@@ -261,11 +265,11 @@ public class SortSearch{
   //   if the item is at data.get(middle), return middle
     while (low <= high){
       step++;
-      delay(2000);
-      System.out.print("\033[1;1H"); //places cursor at top left
+      delay(3000);
+      System.out.print("\033[2;1H"); //places cursor below heading
       System.out.println("Step " + step);
       if (data.get(middle) == value){
-        searchBoard[1][middle] = "!";
+        searchBoard[1][middle] = greenText + "⭱" + whiteText;
         printBoard(searchBoard);
         System.out.print("\033[?25h"); //show the cursor
         return;
@@ -300,18 +304,50 @@ public class SortSearch{
   }
 
   public static void updateBoard(String board[][], int lowIndex, int middleIndex, int highIndex){
-    for (int i = 0; i < board[0].length; i++){
-      board[1][i] = " ";
-      board[2][i] = " ";
+    for (int j = 0; j < board[0].length; j++){
+      if (j < lowIndex || j > highIndex){
+        board[0][j] = redText + board[0][j] + whiteText;
+      }
     }
-    board[1][lowIndex] = "^";
-    board[2][lowIndex] = "L";
-    
-    board[1][middleIndex] = "^";
-    board[2][middleIndex] = "M";
+    for (int i = 0; i < board[0].length; i++){
+      board[1][i] = "  ";
+      board[2][i] = "  ";
+    }
+    if (lowIndex != middleIndex){
+      board[1][lowIndex] = " ↑";
+      board[2][lowIndex] = " L";
 
-    board[1][highIndex] = "^";
-    board[2][highIndex] = "H";
+      board[1][middleIndex] = " ↑";
+      board[2][middleIndex] = " M";
+
+      board[1][highIndex] = " ↑";
+      board[2][highIndex] = " H";
+    } else {
+      board[1][lowIndex - 1] = " ⬈";
+      board[2][lowIndex - 1] = " L";
+
+      board[1][middleIndex] = " ↑";
+      board[2][middleIndex] = " M";
+      
+      if (highIndex == middleIndex){
+        if (highIndex != board[0].length - 1){
+          board[1][highIndex] = "⬉ ";
+          board[2][highIndex] = "H ";
+        } else {
+          board[1][middleIndex] = "↑⬉";
+          board[2][middleIndex] = "MH";
+        }
+      } else {
+        
+      }
+      
+    }
+     
+    
+    
+    
+
+    
   }
   
   public static void delay(int n)
