@@ -3,6 +3,7 @@ import java.io.*;
 
 public class scaffold_activity
 {
+  // printArray: BASIC
   // Prints each element of an array on one line, followed by a space.
   // Example:
   // int[] array = new int[] {4, 5, 6};
@@ -18,6 +19,7 @@ public class scaffold_activity
 
   }
   
+  // prettyPrint: CHALLENGE
   // Prints each element of an array on one line, followed by a comma and a space. The entire array should be surrounded by square brackets.
   // Example:
   // int[] array = new int[] {4, 5, 6};
