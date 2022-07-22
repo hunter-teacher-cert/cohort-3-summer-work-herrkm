@@ -36,7 +36,7 @@ public class Animate
   public static void animate(int n)
   {
     //clear screen, place cursor at origin (upper left)
-    System.out.print("[0;0H\n");
+    System.out.print("\033[H\033[2J");
 
     //System.out.println("we are aaanimaniacs " + n); //prints "we are aaanimaniacs " followed by the integer input value
 

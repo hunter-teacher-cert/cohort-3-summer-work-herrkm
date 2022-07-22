@@ -6,31 +6,33 @@ public class SortSearchDriver {
   
   
   	// Uncomment these to test part 1
-  	//int size = 20;
+  	int size = 10000000;
   	//SortSearch ss = new SortSearch(size);
   	//System.out.println(ss);
-  	
-  	for(int size = 10000000; size <= 1000000000; size*=10){
-      SortSearch ss = new SortSearch(size);
-
-      long start = System.currentTimeMillis();
+    long start;
+    long elapsed;
+  	long timeSum = 0;
+    SortSearch ss = new SortSearch(size);
+    int reps = 10000;
+  	for(int i = 0; i < reps; i++){
       // ss.linearSearch(size*2/3);
-      long elapsed = System.currentTimeMillis() - start;
       // System.out.println("linearSearch time for list of length " + size + ": " + elapsed + " ms");
 
-      start = System.currentTimeMillis();
-      ss.binarySearch(size*2/3);
-      elapsed = System.currentTimeMillis() - start;
-      System.out.println("binarySearch time for list of length " + size + ": " + elapsed + " ms");
-
-      start = System.currentTimeMillis();
+      start = System.nanoTime();
       ss.binarySearchRecursive(size*2/3, 0, size - 1);
-      elapsed = System.currentTimeMillis() - start;
-      System.out.println("binarySearchRecursive time for list of length " + size + ": " + elapsed + " ms");
+      elapsed = System.nanoTime() - start;
+      timeSum += elapsed;
+      // System.out.println(i);
+      // System.out.println("binarySearch time for list of length " + size + ": " + elapsed + " ns");
 
-      System.out.println();
+      // start = System.nanoTime();
+      // ss.binarySearchRecursive(size*2/3, 0, size - 1);
+      // elapsed = System.nanoTime() - start;
+      // System.out.println("binarySearchRecursive time for list of length " + size + ": " + elapsed + " ns");
+
+      // System.out.println();
     }
-
+    System.out.println("Average time (ns) for recursive binary search in list of length 10,000,000: " + (timeSum/reps));
     
   	// Uncomment these to test part 2
   
@@ -46,9 +48,9 @@ public class SortSearchDriver {
   	// Uncomment these to test part 3
     // System.out.println("\nPrint sorted array:");
   	//System.out.println(ss);
-    // long timeBefore = System.currentTimeMillis();
+    // long timeBefore = System.nanoTime();
   	// ss.sort();
-    // long timeElapsed = System.currentTimeMillis() - timeBefore;
+    // long timeElapsed = System.nanoTime() - timeBefore;
   	//System.out.println(ss);
     // System.out.println("Sorting took " + timeElapsed + " ms.");
   
